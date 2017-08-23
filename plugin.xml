@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="com.unionpay.screenrecord"
+        version="0.0.1"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>ScreenRecord</name>
+    <js-module name="ScreenRecord" src="www/ScreenRecord.js">
+        <clobbers target="ScreenRecord"/>
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+        </config-file>
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="ScreenRecord">
+                <param name="android-package" value="com.unionpay.screenrecord.ScreenRecord"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/ScreenRecord.java"
+                     target-dir="src/com/unionpay/screenrecord"/>
+        <source-file src="src/android/ScreenRecordService.java"
+                     target-dir="src/com/unionpay/screenrecord"/>
+    </platform>
+</plugin>
