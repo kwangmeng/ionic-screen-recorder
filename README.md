@@ -44,6 +44,7 @@
 	Callback function that provide a error message.
 
 ## Ionic2 Example
+
 	use this plugin in ionic2 project
 
 	1. `ionic plugin add cordova-plugin-screenrecord`
