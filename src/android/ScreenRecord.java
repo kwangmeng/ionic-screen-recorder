@@ -37,8 +37,10 @@ public class ScreenRecord extends CordovaPlugin {
 
     public String filePath;
 
+    public int width, height, bitRate, dpi;
+
     public static final int PERMISSION_DENIED_ERROR = 20;
-    public static final int RECORD_AUDIO = 0;
+    public static final int RECORD_AUDIO= 0;
 
     protected final static String permission = Manifest.permission.RECORD_AUDIO;
 
@@ -49,10 +51,14 @@ public class ScreenRecord extends CordovaPlugin {
         this.callbackContext = callbackContext;
         if (action.equals("startRecord")) {
             options = args.getJSONObject(0);
+            width = options.getInt("width");
+            height = options.getInt("height");
+            bitRate = options.getInt("bitRate");
+            dpi = options.getInt("dpi");
             filePath = args.getString(1);
             this.startRecord(callbackContext);
             return true;
-        } else if (action.equals("stopRecord")) {
+        }else if (action.equals("stopRecord")) {
             this.stopRecord(callbackContext);
             return true;
         }
@@ -63,14 +69,10 @@ public class ScreenRecord extends CordovaPlugin {
         if (screenRecord != null) {
             callbackContext.error("screenRecord service is running");
         } else {
-            if (cordova != null) {
+            if(cordova != null) {
                 try {
-                    if (!PermissionHelper.hasPermission(this, permission)) {
-                        PermissionHelper.requestPermission(this, RECORD_AUDIO, permission);
-                    } else {
-                        callScreenRecord();
-                    }
-                } catch (IllegalArgumentException e) {
+                    callScreenRecord();
+                }catch(IllegalArgumentException e) {
                     callbackContext.error("Illegal Argument Exception");
                     PluginResult r = new PluginResult(PluginResult.Status.ERROR);
                     callbackContext.sendPluginResult(r);
@@ -80,17 +82,17 @@ public class ScreenRecord extends CordovaPlugin {
     }
 
     private void stopRecord(CallbackContext callbackContext) {
-        if (screenRecord != null) {
+        if(screenRecord != null){
             screenRecord.quit();
             screenRecord = null;
             callbackContext.success("ScreenRecord finish.");
-        } else {
+        }else {
             callbackContext.error("no ScreenRecord in process");
         }
     }
 
     private void callScreenRecord() {
-        mProjectionManager = (MediaProjectionManager) this.cordova.getActivity().getSystemService("media_projection");
+        mProjectionManager = (MediaProjectionManager)this.cordova.getActivity().getSystemService("media_projection");
         Intent captureIntent = mProjectionManager.createScreenCaptureIntent();
         cordova.startActivityForResult(this, captureIntent, SCREEN_RECORD_CODE);
     }
@@ -107,34 +109,19 @@ public class ScreenRecord extends CordovaPlugin {
             callbackContext.error("no ScreenRecord in process");
             return;
         }
-        if (requestCode == 0) {
-            try {
-                File file = new File(filePath);
-                screenRecord = new ScreenRecordService(options.getInt("width"), options.getInt("height"), options.getInt("bitRate"), options.getInt("dpi"),
-                        mediaProjection, file.getAbsolutePath());
-                screenRecord.start();
-                Log.d(TAG, "screenrecord service is running");
-                this.callbackContext.success("screenrecord service is running");
-                cordova.getActivity().moveTaskToBack(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+        if(requestCode == 0){
+           try {
+               File file = new File(filePath);
+               screenRecord = new ScreenRecordService(width, height, bitRate, dpi,
+                   mediaProjection, file.getAbsolutePath());
+               screenRecord.start();
+               Log.d(TAG, "screenrecord service is running");
+               this.callbackContext.success("screenrecord service is running");
+               cordova.getActivity().moveTaskToBack(true);
+           }catch (Exception e){
+              e.printStackTrace();
+          }
+      }
+  }
 
-    /**
-     * 权限请求回调
-     */
-    public void onRequestPermissionResult(int requestCode, String[] permissions,
-                                          int[] grantResults) throws JSONException {
-        for (int r : grantResults) {
-            if (r == PackageManager.PERMISSION_DENIED) {
-                this.callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, PERMISSION_DENIED_ERROR));
-                return;
-            }
-        }
-        if (requestCode == RECORD_AUDIO) {
-            callScreenRecord();
-        }
-    }
 }
