@@ -1,10 +1,12 @@
 # cordova-plugin-screenrecord
 
 **cordova plugin, support Android**
-	using MediaCodec and MediaMuxer to record Android device's screen
+
+using MediaCodec and MediaMuxer to record Android device's screen
 
 ## Installation
-	`cordova plugin add cordova-plugin-screenrecord --save`
+
+`cordova plugin add cordova-plugin-screenrecord --save`
 
 ## Api Reference
 ### [ScreenRecord.startRecord(options, filePath, success, error)]()
@@ -45,8 +47,8 @@
 
 ## Ionic2 Example
 
-	use this plugin in ionic2 project
+use this plugin in ionic2 project
 
-	1. `ionic plugin add cordova-plugin-screenrecord`
-	2. `declare var ScreenRecord` in `declarations.d.ts`
-	3.  using `ScreenRecord` in your .ts file
+1. `ionic plugin add cordova-plugin-screenrecord`
+2. `declare var ScreenRecord` in `declarations.d.ts`
+3.  using `ScreenRecord` in your .ts file
