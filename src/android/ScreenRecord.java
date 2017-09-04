@@ -19,6 +19,8 @@ import android.util.Log;
 import android.content.pm.PackageManager;
 
 import com.unionpay.screenrecord.ScreenRecordService;
+import com.unionpay.screenrecord.MediaRecordService;
+
 
 /**
  * This class echoes a string called from JavaScript.
@@ -31,11 +33,15 @@ public class ScreenRecord extends CordovaPlugin {
 
     public ScreenRecordService screenRecord;
 
+    public MediaRecordService mediaRecord;
+
     public CallbackContext callbackContext;
 
     public JSONObject options;
 
     public String filePath;
+
+    public boolean isAudio;     // true: MediaRecord, false: ScreenRecord
 
     public int width, height, bitRate, dpi;
 
@@ -51,6 +57,8 @@ public class ScreenRecord extends CordovaPlugin {
         this.callbackContext = callbackContext;
         if (action.equals("startRecord")) {
             options = args.getJSONObject(0);
+            Log.d(TAG, options.toString());
+            isAudio = options.getBoolean("isAudio");
             width = options.getInt("width");
             height = options.getInt("height");
             bitRate = options.getInt("bitRate");
@@ -82,12 +90,22 @@ public class ScreenRecord extends CordovaPlugin {
     }
 
     private void stopRecord(CallbackContext callbackContext) {
-        if(screenRecord != null){
-            screenRecord.quit();
-            screenRecord = null;
-            callbackContext.success("ScreenRecord finish.");
+        if(isAudio){
+            if(mediaRecord != null){
+                mediaRecord.release();
+                mediaRecord = null;
+                callbackContext.success("ScreenRecord finish.");
+            }else {
+                callbackContext.error("no ScreenRecord in process");
+            }
         }else {
-            callbackContext.error("no ScreenRecord in process");
+            if(screenRecord != null){
+                screenRecord.quit();
+                screenRecord = null;
+                callbackContext.success("ScreenRecord finish.");
+            }else {
+                callbackContext.error("no ScreenRecord in process");
+            }
         }
     }
 
@@ -112,9 +130,16 @@ public class ScreenRecord extends CordovaPlugin {
         if(requestCode == 0){
            try {
                File file = new File(filePath);
-               screenRecord = new ScreenRecordService(width, height, bitRate, dpi,
-                   mediaProjection, file.getAbsolutePath());
-               screenRecord.start();
+
+               if(isAudio){
+                mediaRecord = new MediaRecordService(width, height, bitRate, dpi, mediaProjection, file.getAbsolutePath());
+                mediaRecord.start();
+               }else {
+                screenRecord = new ScreenRecordService(width, height, bitRate, dpi,
+                mediaProjection, file.getAbsolutePath());
+                screenRecord.start();
+               }
+               
                Log.d(TAG, "screenrecord service is running");
                this.callbackContext.success("screenrecord service is running");
                cordova.getActivity().moveTaskToBack(true);

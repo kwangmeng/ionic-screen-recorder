@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android" id="com.unionpay.screenrecord"
-        version="0.0.1"
+        version="0.0.3"
         xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>ScreenRecord</name>
     <js-module name="ScreenRecord" src="www/ScreenRecord.js">
