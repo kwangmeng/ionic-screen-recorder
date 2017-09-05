@@ -2,7 +2,7 @@
 
 **cordova plugin, support Android**
 
-using MediaCodec and MediaMuxer to record Android device's screen
+using MediaRecorder or MediaMuxer to record Android device's screen
 
 ## Installation
 
@@ -14,6 +14,7 @@ using MediaCodec and MediaMuxer to record Android device's screen
 
 | Name | Type | Default | Description |
 | ---  | :---:  | :---:     | :---: |
+| isAudio | boolean | false | If true, the plugin uses MediaRecorder to record audio & video |
 | width  | number | 720 |width in pixels to record screen |
 | height | number | 1280 |height in pixels to record screen |
 | bitRate| number | 6000000 | the bit rate of video |
