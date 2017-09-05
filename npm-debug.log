@@ -1,0 +1,105 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish', '.' ]
+2 info using npm@3.8.9
+3 info using node@v6.2.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/muzi/Desktop/UnionPay/cordova-plugin-screenrecord',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/muzi/.npm/cordova-plugin-screenrecord/0.0.3/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/muzi/.npm correctMkdir not in flight; initializing
+10 info lifecycle cordova-plugin-screenrecord@0.0.3~prepublish: cordova-plugin-screenrecord@0.0.3
+11 silly lifecycle cordova-plugin-screenrecord@0.0.3~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/muzi/.npm/cordova-plugin-screenrecord/0.0.3/package.tgz',
+12 verbose tar pack   '/Users/muzi/Desktop/UnionPay/cordova-plugin-screenrecord' ]
+13 verbose tarball /Users/muzi/.npm/cordova-plugin-screenrecord/0.0.3/package.tgz
+14 verbose folder /Users/muzi/Desktop/UnionPay/cordova-plugin-screenrecord
+15 verbose addLocalTarball adding from inside cache /Users/muzi/.npm/cordova-plugin-screenrecord/0.0.3/package.tgz
+16 verbose correctMkdir /Users/muzi/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd cordova-plugin-screenrecord@0.0.3
+18 verbose afterAdd /Users/muzi/.npm/cordova-plugin-screenrecord/0.0.3/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/muzi/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/muzi/.npm/cordova-plugin-screenrecord/0.0.3/package/package.json written
+21 silly publish { name: 'cordova-plugin-screenrecord',
+21 silly publish   version: '0.0.3',
+21 silly publish   description: 'using MediaRecorder or MediaMuxer to record Android device\'s screen',
+21 silly publish   cordova: { id: 'com.unionpay.screenrecord', platforms: [ 'android' ] },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/monkeyDledger/cordova-plugin-screenrecord.git' },
+21 silly publish   keywords: [ 'ecosystem:cordova', 'cordova-android' ],
+21 silly publish   author: { name: 'charles0427' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/monkeyDledger/cordova-plugin-screenrecord/issues' },
+21 silly publish   homepage: 'https://github.com/monkeyDledger/cordova-plugin-screenrecord#readme',
+21 silly publish   readme: '# cordova-plugin-screenrecord\n\n**cordova plugin, support Android**\n\nusing MediaRecorder or MediaMuxer to record Android device\'s screen\n\n## Installation\n\n`cordova plugin add cordova-plugin-screenrecord --save`\n\n## Api Reference\n### [ScreenRecord.startRecord(options, filePath, success, error)]()\n* options, Object\n\n| Name | Type | Default | Description |\n| ---  | :---:  | :---:     | :---: |\n| isAudio | boolean | false | If true, the plugin uses MediaRecorder to record audio & video |\n| width  | number | 720 |width in pixels to record screen |\n| height | number | 1280 |height in pixels to record screen |\n| bitRate| number | 6000000 | the bit rate of video |\n| dpi | number| 1 | the dpi of video  |\n\n* filePath,  String\n\n\tthe full absolute path of the video file\n\n\t**example:** `/sdcard/yourapp/test.mp4`\n\n* success,  Function\n\n\tCallback function that provides a message when the screen-record process started\n\n\tAfter the screen-record process started, the java will call `cordova.getActivity().moveTaskToBack(true)`\n\n* error,  Function\n\n\tCallback function that provides a error message\n\n### [ScreenRecord.stopRecord(success, error)]()\n\tstop a running screen-record process \n* success,  Function\n\n\tCallback function that provide a message when stop a running process\n\n* error,  Function\n\n\tCallback function that provide a error message.\n\n## Ionic2 Example\n\nuse this plugin in ionic2 project\n\n1. `ionic plugin add cordova-plugin-screenrecord`\n2. `declare var ScreenRecord` in `declarations.d.ts`\n3.  using `ScreenRecord` in your .ts file\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '9409f59775b05aa6b671aca84649825fe9912a98',
+21 silly publish   _id: 'cordova-plugin-screenrecord@0.0.3',
+21 silly publish   scripts: {},
+21 silly publish   _shasum: 'a0231ef2ee69f701e4faa25b224bbc488d7576b3',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name cordova-plugin-screenrecord
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry http://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'cordova-plugin-screenrecord',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'cordova-plugin-screenrecord',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri http://registry.npmjs.org/cordova-plugin-screenrecord
+28 verbose publish registryBase http://registry.npmjs.org/
+29 silly publish uploading /Users/muzi/.npm/cordova-plugin-screenrecord/0.0.3/package.tgz
+30 verbose request uri http://registry.npmjs.org/cordova-plugin-screenrecord
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 14:01:54
+33 verbose request using bearer token for auth
+34 verbose request id 7b3c845e15d7c75d
+35 http request PUT http://registry.npmjs.org/cordova-plugin-screenrecord
+36 http 403 http://registry.npmjs.org/cordova-plugin-screenrecord
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '91',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Tue, 05 Sep 2017 06:01:55 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-nrt6125-NRT',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1504591314.415457,VS0,VE589',
+37 verbose headers   vary: 'Accept-Encoding, Accept' }
+38 verbose request invalidating /Users/muzi/.npm/registry.npmjs.org/cordova-plugin-screenrecord on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: You cannot publish over the previously published version 0.0.3. : cordova-plugin-screenrecord
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:200:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1067:10)
+40 verbose stack     at emitOne (events.js:101:20)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:988:12)
+41 verbose statusCode 403
+42 verbose pkgid cordova-plugin-screenrecord
+43 verbose cwd /Users/muzi/Desktop/UnionPay/cordova-plugin-screenrecord
+44 error Darwin 16.5.0
+45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish" "."
+46 error node v6.2.0
+47 error npm  v3.8.9
+48 error code E403
+49 error You cannot publish over the previously published version 0.0.3. : cordova-plugin-screenrecord
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

@@ -2,6 +2,11 @@
 
 **cordova plugin, support Android**
 
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/monkeyDledger/cordova-plugin-screenrecord)
+[![Github All Releases](https://img.shields.io/github/downloads/monkeyDledger/cordova-plugin-screenrecord/total.svg)]([![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/monkeyDledger/cordova-plugin-screenrecord))
+
+[![NPM](https://nodei.co/npm/cordova-plugin-screenrecord.png?compact=true)](https://nodei.co/npm/cordova-plugin-screenrecord/)
+
 using MediaRecorder or MediaMuxer to record Android device's screen
 
 ## Installation
@@ -22,29 +27,29 @@ using MediaRecorder or MediaMuxer to record Android device's screen
 
 * filePath,  String
 
-	the full absolute path of the video file
+the full absolute path of the video file
 
-	**example:** `/sdcard/yourapp/test.mp4`
+**example:** `/sdcard/yourapp/test.mp4`
 
 * success,  Function
 
-	Callback function that provides a message when the screen-record process started
+Callback function that provides a message when the screen-record process started
 
-	After the screen-record process started, the java will call `cordova.getActivity().moveTaskToBack(true)`
+After the screen-record process started, the java will call `cordova.getActivity().moveTaskToBack(true)`
 
 * error,  Function
 
-	Callback function that provides a error message
+Callback function that provides a error message
 
 ### [ScreenRecord.stopRecord(success, error)]()
-	stop a running screen-record process 
+stop a running screen-record process 
 * success,  Function
 
-	Callback function that provide a message when stop a running process
+Callback function that provide a message when stop a running process
 
 * error,  Function
 
-	Callback function that provide a error message.
+Callback function that provide a error message.
 
 ## Ionic2 Example
 
