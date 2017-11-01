@@ -4,9 +4,14 @@
 
 using MediaRecorder or MediaMuxer to record Android device's screen
 
+This plugin is not made by me but I did some modification in the code such as adding functionalities like pause and resume in mediarecord. 
+
 ## Installation
 
 `cordova plugin add cordova-plugin-screenrecord --save`
+
+The modification made is suit for my use. You can modify the options in ScreenRecord.java.
+ 
 
 ## Api Reference
 ### [ScreenRecord.startRecord(options, success, error)]()
