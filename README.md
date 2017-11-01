@@ -1,11 +1,6 @@
 # cordova-plugin-screenrecord
 
-**cordova plugin, support Android**
-
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/monkeyDledger/cordova-plugin-screenrecord)
-[![Github All Releases](https://img.shields.io/github/downloads/monkeyDledger/cordova-plugin-screenrecord/total.svg)]([![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/monkeyDledger/cordova-plugin-screenrecord))
-
-[![NPM](https://nodei.co/npm/cordova-plugin-screenrecord.png?compact=true)](https://nodei.co/npm/cordova-plugin-screenrecord/)
+**cordova plugin, support Android ONLY**
 
 using MediaRecorder or MediaMuxer to record Android device's screen
 
@@ -14,7 +9,7 @@ using MediaRecorder or MediaMuxer to record Android device's screen
 `cordova plugin add cordova-plugin-screenrecord --save`
 
 ## Api Reference
-### [ScreenRecord.startRecord(options, filePath, success, error)]()
+### [ScreenRecord.startRecord(options, success, error)]()
 * options, Object
 
 | Name | Type | Default | Description |
@@ -25,17 +20,11 @@ using MediaRecorder or MediaMuxer to record Android device's screen
 | bitRate| number | 6000000 | the bit rate of video |
 | dpi | number| 1 | the dpi of video  |
 
-* filePath,  String
-
-the full absolute path of the video file
-
-**example:** `/sdcard/yourapp/test.mp4`
-
 * success,  Function
 
 Callback function that provides a message when the screen-record process started
 
-After the screen-record process started, the java will call `cordova.getActivity().moveTaskToBack(true)`
+After the screen-record process started, the java will call `cordova.getActivity()(true)`
 
 * error,  Function
 
@@ -54,6 +43,7 @@ Callback function that provide a error message.
 ### [ScreenRecord.pauseRecord(success, error)]()
 
 **NOTE: ONLY WORKS FOR ANDROID NOUGAT AND ABOVE**
+
 pause a running screen-record process 
 * success,  Function
 
@@ -65,6 +55,7 @@ Callback function that provide a error message.
 
 ### [ScreenRecord.resumeRecord(success, error)]()
 **NOTE: ONLY WORKS FOR ANDROID NOUGAT AND ABOVE**
+
 resume a running screen-record process 
 * success,  Function
 
@@ -73,7 +64,7 @@ Callback function that provide a message when stop a running process
 * error,  Function
 
 Callback function that provide a error message.
-## Ionic2 Example
+## Ionic2/3 Example
 
 use this plugin in ionic2 project
 
