@@ -51,6 +51,28 @@ Callback function that provide a message when stop a running process
 
 Callback function that provide a error message.
 
+### [ScreenRecord.pauseRecord(success, error)]()
+
+**NOTE: ONLY WORKS FOR ANDROID NOUGAT AND ABOVE**
+pause a running screen-record process 
+* success,  Function
+
+Callback function that provide a message when stop a running process
+
+* error,  Function
+
+Callback function that provide a error message.
+
+### [ScreenRecord.resumeRecord(success, error)]()
+**NOTE: ONLY WORKS FOR ANDROID NOUGAT AND ABOVE**
+resume a running screen-record process 
+* success,  Function
+
+Callback function that provide a message when stop a running process
+
+* error,  Function
+
+Callback function that provide a error message.
 ## Ionic2 Example
 
 use this plugin in ionic2 project
