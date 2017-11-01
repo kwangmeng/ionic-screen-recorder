@@ -75,6 +75,23 @@ public class MediaRecordService extends Thread {
 	Log.i(TAG, "media recorder" + mBitRate + "kps");
     }
 
+
+
+	public void pause(){
+		Log.d(TAG,"pause invoked here at media record service");
+		mMediaRecorder.pause();
+
+	}
+
+	public void resumeVid(){
+		Log.d(TAG,"resume invoked here at media record service");
+		mMediaRecorder.resume();
+
+	}
+
+
+
+
     public void release() {
 	if (mVirtualDisplay != null) {
 	    mVirtualDisplay.release();

@@ -69,8 +69,45 @@ public class ScreenRecord extends CordovaPlugin {
         }else if (action.equals("stopRecord")) {
             this.stopRecord(callbackContext);
             return true;
+        }else if (action.equals("pauseRecord")) {
+            this.pauseRecord(callbackContext);
+            return true;
+        }else if (action.equals("resumeRecord")) {
+            this.resumeRecord(callbackContext);
+            return true;
         }
         return false;
+    }   
+
+
+     private void pauseRecord(CallbackContext callbackContext) {
+        if(isAudio){
+            if(mediaRecord != null){
+                mediaRecord.pause();
+               // mediaRecord = null;
+                callbackContext.success("Paused Invoked.");
+            }else {
+                callbackContext.error("paused invoked failed.");
+            }
+        }else{
+             // you can manipulate screen record capability here
+        }
+    }
+
+
+
+    private void resumeRecord(CallbackContext callbackContext) {
+        if(isAudio){
+            if(mediaRecord != null){
+                mediaRecord.resumeVid();
+               // mediaRecord = null;
+                callbackContext.success("resume Invoked.");
+            }else {
+                callbackContext.error("paused invoked failed.");
+            }
+        }else{
+            // you can manipulate screen record capability here
+        }
     }
 
     private void startRecord(CallbackContext callbackContext) {
@@ -129,20 +166,30 @@ public class ScreenRecord extends CordovaPlugin {
         }
         if(requestCode == 0){
            try {
-               File file = new File(filePath);
+                  String folder_main = "FOLDER_NAME"; //setting folder's name
+            File f = new File(Environment.getExternalStorageDirectory(), folder_main);
+            if (!f.exists()) {
+                f.mkdirs();
+            }
+
+                 String name = System.currentTimeMillis() + ".mp4"; // this is to set the file name
+                 File appDir = Environment.getExternalStorageDirectory();  // this is to obtain the public storage directory
+            // 出力ファイルのパス 
+                String path = new File(appDir+"/"+folder_main, name).getAbsolutePath(); // join the path and file name together to obtain absolute path. 
+
 
                if(isAudio){
-                mediaRecord = new MediaRecordService(width, height, bitRate, dpi, mediaProjection, file.getAbsolutePath());
+                mediaRecord = new MediaRecordService(width, height, bitRate, dpi, mediaProjection, path); //change the parameter to path. 
                 mediaRecord.start();
                }else {
                 screenRecord = new ScreenRecordService(width, height, bitRate, dpi,
-                mediaProjection, file.getAbsolutePath());
+                mediaProjection, path);//change the parameter to path. 
                 screenRecord.start();
                }
                
                Log.d(TAG, "screenrecord service is running");
                this.callbackContext.success("screenrecord service is running");
-               cordova.getActivity().moveTaskToBack(true);
+               cordova.getActivity(); //removed movetasktoback, so if when plugin is invoked in home page, it closes the app to previous screen (exit). 
            }catch (Exception e){
               e.printStackTrace();
           }

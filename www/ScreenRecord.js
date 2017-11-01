@@ -20,4 +20,13 @@ ScreenRecord.stopRecord = function(success, error) {
   exec(success, error, "ScreenRecord", "stopRecord", []);
 }
 
+// modify by Kenny Ng Kwang Meng, added pause and resume capability for mediarecord only, screen recording have not implemented, ***NOTE: ONLY ANDROID NOUGAT AND ABOVE
+ScreenRecord.pauseRecord = function(success, error) {
+  exec(success, error, "ScreenRecord", "pauseRecord", []);
+}
+
+ScreenRecord.resumeRecord = function(success, error) {
+  exec(success, error, "ScreenRecord", "resumeRecord", []);
+}
+
 module.exports = ScreenRecord;
